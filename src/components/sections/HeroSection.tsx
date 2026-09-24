@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { useInteractiveAutoplayVideo } from "@/hooks/useInteractiveAutoplayVideo";
 import { home } from "@/lib/content";
+import { mediaPath } from "@/lib/paths";
 
 export function HeroSection() {
   const { videoRef, videoInteractionProps } = useInteractiveAutoplayVideo();
@@ -70,7 +71,7 @@ export function HeroSection() {
             <video
               ref={videoRef}
               {...videoInteractionProps}
-              src={hero.video}
+              src={mediaPath(hero.video)}
               aria-label={hero.videoLabel}
               className="size-full object-cover"
               autoPlay

@@ -1,0 +1,71 @@
+name: Náhled na GitHub Pages
+
+# Provizorní náhled webu na https://i3lade02.github.io/smk-capital-next/
+# Běží vedle nasazení na Endoru (deploy.yml) a ostrý web nijak neovlivní.
+#
+# Jednorázově je potřeba v repozitáři zapnout Pages:
+# Settings → Pages → Build and deployment → Source: „GitHub Actions“.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Sestavit web
+    runs-on: ubuntu-latest
+
+    env:
+      # Pages servíruje web pod /<název repozitáře>/, ne v kořeni domény.
+      NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
+      # Video (110 MB) není v repozitáři – načítá se z ostrého hostingu.
+      NEXT_PUBLIC_MEDIA_ORIGIN: https://smkcapital.cz
+      # PHP skripty formulářů běží jen na Endoře, proto absolutní adresy.
+      # Proměnné z prostředí mají přednost před .env.production.
+      NEXT_PUBLIC_CONTACT_FORM_ENDPOINT: https://smkcapital.cz/contact.php
+      NEXT_PUBLIC_CAR_INSURANCE_ENDPOINT: https://smkcapital.cz/car-insurance.php
+      NEXT_PUBLIC_MORTGAGE_CALCULATION_ENDPOINT: https://smkcapital.cz/mortgage-calculation.php
+      NEXT_PUBLIC_CONTRACT_REVIEW_ENDPOINT: https://smkcapital.cz/contract-review.php
+
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+
+      - name: Nastavit Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Nainstalovat závislosti
+        run: npm ci
+
+      - name: Sestavit statický web
+        run: npm run build
+
+      - name: Připravit soubory pro Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    name: Nasadit na GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Nasadit
+        id: deployment
+        uses: actions/deploy-pages@v4

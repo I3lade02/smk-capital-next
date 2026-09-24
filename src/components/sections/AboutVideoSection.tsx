@@ -4,6 +4,7 @@ import { SectionKicker } from "@/components/ui/SectionKicker";
 import { useInteractiveAutoplayVideo } from "@/hooks/useInteractiveAutoplayVideo";
 import { about } from "@/lib/content";
 import { Icon } from "@/lib/icons";
+import { mediaPath } from "@/lib/paths";
 
 export function AboutVideoSection() {
   const { videoRef, videoInteractionProps } = useInteractiveAutoplayVideo();
@@ -23,7 +24,7 @@ export function AboutVideoSection() {
           <video
             ref={videoRef}
             {...videoInteractionProps}
-            src={videoSection.video}
+            src={mediaPath(videoSection.video)}
             aria-label={videoSection.videoLabel}
             className="size-full object-cover"
             autoPlay

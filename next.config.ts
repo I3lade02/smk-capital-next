@@ -9,9 +9,13 @@ import type { NextConfig } from "next";
  *   obslouží `/sluzby` i `/sluzby/` bez jakéhokoli přepisování URL.
  * - `images.unoptimized` je nutné, protože optimalizace obrázků v Next.js
  *   vyžaduje Node.js server, který na sdíleném hostingu není.
+ * - `basePath` je prázdný pro Endoru; workflow pro GitHub Pages nastaví
+ *   `NEXT_PUBLIC_BASE_PATH=/smk-capital-next`, protože tam web neběží
+ *   v kořeni domény.
  */
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
   trailingSlash: true,
   images: {
     unoptimized: true,

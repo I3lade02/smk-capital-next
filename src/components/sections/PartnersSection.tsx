@@ -1,11 +1,12 @@
 import { SectionKicker } from "@/components/ui/SectionKicker";
 import { partners, type Partner } from "@/lib/content";
+import { assetPath } from "@/lib/paths";
 
 function PartnerLogo({ partner }: { partner: Partner }) {
   return (
     <div className="partner-logo-card">
       <img
-        src={partner.logo}
+        src={assetPath(partner.logo)}
         alt=""
         className="partner-logo"
         loading="lazy"

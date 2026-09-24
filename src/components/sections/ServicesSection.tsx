@@ -8,6 +8,7 @@ import { SectionKicker } from "@/components/ui/SectionKicker";
 import { home, services } from "@/lib/content";
 import { Icon } from "@/lib/icons";
 import { scrollToSectionFromHref } from "@/lib/sectionLinks";
+import { assetPath } from "@/lib/paths";
 
 const contactHref = "#contact";
 
@@ -22,7 +23,7 @@ export function ServicesSection() {
       <div className="grid gap-8 xl:grid-cols-[300px_1fr]">
         <div className="interactive-card overflow-hidden rounded-[28px] rounded-tr-[90px] bg-white shadow-[0_25px_70px_rgba(6,26,52,0.1)]">
           <img
-            src={servicesIntro.image}
+            src={assetPath(servicesIntro.image)}
             alt={servicesIntro.imageAlt}
             className="h-72 w-full object-cover object-[center_70%]"
           />

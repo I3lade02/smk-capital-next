@@ -6,6 +6,7 @@ import { PageNavigation } from "@/components/layout/PageNavigation";
 import { RouteEffects } from "@/components/layout/RouteEffects";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { home, site } from "@/lib/content";
+import { assetPath } from "@/lib/paths";
 
 import "./globals.css";
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   description: home.seo.description,
   authors: [{ name: site.shortName }],
   icons: {
-    icon: "/favicon.png",
+    icon: assetPath("/favicon.png"),
   },
 };
 

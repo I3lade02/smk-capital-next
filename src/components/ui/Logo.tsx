@@ -1,5 +1,6 @@
 import { cn } from "@/lib/cn";
 import { site } from "@/lib/content";
+import { assetPath } from "@/lib/paths";
 
 type LogoProps = {
   variant?: "light" | "dark";
@@ -17,7 +18,7 @@ export function Logo({ variant = "dark", compact = false }: LogoProps) {
       )}
     >
       <img
-        src={site.logo}
+        src={assetPath(site.logo)}
         alt={`${site.name} logo`}
         className={cn("w-auto object-contain", compact ? "h-24" : "h-[239px]")}
       />
