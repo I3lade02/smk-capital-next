@@ -1,0 +1,21 @@
+{
+  "kicker": "Silní partneři",
+  "title": "S kým spolupracujeme",
+  "description": "Spolupracujeme s předními bankami a pojišťovnami, abychom pro vás mohli porovnat více možností a doporučit řešení, které opravdu dává smysl.",
+  "rowOne": [
+    { "name": "BIDLI", "logo": "/partners/bidli.svg" },
+    { "name": "ČSOB", "logo": "/partners/csob.svg" },
+    { "name": "ČPP", "logo": "/partners/cpp.svg" },
+    { "name": "Allianz", "logo": "/partners/allianz.svg" },
+    { "name": "Kooperativa", "logo": "/partners/kooperativa.svg" },
+    { "name": "mBank", "logo": "/partners/mbank.svg" }
+  ],
+  "rowTwo": [
+    { "name": "Raiffeisenbank", "logo": "/partners/raiffeisenbank.svg" },
+    { "name": "Pillow", "logo": "/partners/pillow.svg" },
+    { "name": "NN pojištění", "logo": "/partners/nn.svg" },
+    { "name": "Direct", "logo": "/partners/direct.svg" },
+    { "name": "UNIQA", "logo": "/partners/uniqa.svg" },
+    { "name": "VZP", "logo": "/partners/vzp.svg" }
+  ]
+}

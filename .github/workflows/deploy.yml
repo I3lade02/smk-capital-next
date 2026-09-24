@@ -1,0 +1,59 @@
+name: Sestavit web a nahrát na Endoru
+
+# Spustí se při každé změně v hlavní větvi – tedy i tehdy, když klient uloží
+# úpravu textu v administraci na /admin (ta zapisuje přímo do repozitáře).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build a FTP nasazení
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+
+      - name: Nastavit Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Nainstalovat závislosti
+        run: npm ci
+
+      - name: Zkontrolovat typy
+        run: npm run typecheck
+
+      - name: Sestavit statický web
+        run: npm run build
+
+      - name: Nahrát na FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          # Složka na hostingu, ze které se web servíruje.
+          # Na Endoře to bývá /www/ nebo /web/ – ověřte ve svém FTP klientovi.
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          local-dir: ./out/
+          # PHP skripty formulářů ani video nejsou součástí repozitáře,
+          # takže je nasazení nesmí na hostingu smazat.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            contact.php
+            car-insurance.php
+            mortgage-calculation.php
+            contract-review.php
+            reklama_final.mp4

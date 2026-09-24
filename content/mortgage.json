@@ -1,0 +1,46 @@
+{
+  "seo": {
+    "title": "Hypoteční propočet – orientační výpočet splátek | SMK Capital",
+    "description": "Zadejte příjmy, splátky a závazky a získejte orientační podklad pro hypoteční konzultaci. Ozveme se s dalším postupem."
+  },
+  "hero": {
+    "kicker": "Hypoteční propočet",
+    "title": "Rychlá žádost o orientační propočet.",
+    "description": "Zadejte základní příjmy, splátky a závazky. Připravíme podklad pro další hypoteční konzultaci a ozveme se vám s dalším postupem.",
+    "cards": [
+      {
+        "icon": "ClockHour3",
+        "title": "Bez zdlouhavého zadávání",
+        "text": "Stačí několik základních čísel. Detaily doladíme telefonicky.",
+        "highlighted": false
+      },
+      {
+        "icon": "BuildingBank",
+        "title": "Nezávazně a přehledně",
+        "text": "Výsledek slouží jako orientace před dalším ověřením možností financování.",
+        "highlighted": true
+      }
+    ]
+  },
+  "processSection": {
+    "kicker": "Jak to probíhá",
+    "title": "Orientace před konkrétní nabídkou.",
+    "items": [
+      {
+        "icon": "Calculator",
+        "title": "Zadáte základní čísla",
+        "text": "Doba splatnosti, příjmy, splátky a závazky nám dají první orientaci."
+      },
+      {
+        "icon": "BuildingBank",
+        "title": "Připravíme orientaci",
+        "text": "Nejde o závazný výpočet, ale o podklad pro další hypoteční konzultaci."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Ozveme se zpět",
+        "text": "Doplníme detaily a projdeme možnosti financování podle vaší situace."
+      }
+    ]
+  }
+}

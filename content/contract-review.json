@@ -1,0 +1,119 @@
+{
+  "seo": {
+    "title": "Bezplatná revize smluv | SMK Capital",
+    "description": "Pošlete nám PDF nebo fotografie smluv. Zkontrolujeme cenu, krytí i podmínky a doporučíme, kde má smysl úspora nebo lepší řešení."
+  },
+  "hero": {
+    "kicker": "Bezplatná revize smluv",
+    "title": "Zde můžete nahrát smlouvy, které chcete zkontrolovat.",
+    "description": "Nebo nám jednoduše vyplňte dotazník – zaškrtněte služby, které využíváte, nebo jen ty, na které se chcete zaměřit, a do poznámky nám napište, co konkrétně potřebujete vyřešit. Ozveme se Vám co nejdříve.",
+    "cards": [
+      {
+        "icon": "FileTypePdf",
+        "title": "Dokumenty i fotky",
+        "text": "Přiložte PDF, JPG, PNG, WEBP nebo HEIC. Stačí i fotografie z telefonu.",
+        "highlighted": false
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Bez závazku",
+        "text": "Pokud najdeme prostor pro zlepšení, vysvětlíme vám konkrétní možnosti.",
+        "highlighted": true
+      }
+    ],
+    "benefits": [
+      "PDF i fotografie smluv",
+      "Kontrola ceny, krytí a podmínek",
+      "Srozumitelné vysvětlení možností",
+      "Bezplatně a nezávazně"
+    ]
+  },
+  "pageSteps": [
+    {
+      "icon": "Photo",
+      "title": "1. Nahrajete podklady",
+      "text": "Vyberete oblasti, přiložíte smlouvy a doplníte kontakt."
+    },
+    {
+      "icon": "ShieldCheck",
+      "title": "2. Zkontrolujeme rizika",
+      "text": "Projdem cenu, rozsah krytí, limity, výluky i návaznosti."
+    },
+    {
+      "icon": "CircleCheck",
+      "title": "3. Dostanete návrh",
+      "text": "Pokud najdeme lepší řešení, vysvětlíme ho srozumitelně."
+    }
+  ],
+  "section": {
+    "kicker": "Bezplatná revize smluv",
+    "title": "Máte své finance skutečně pod kontrolou?",
+    "description": "Většina lidí má několik smluv u různých společností, platí zbytečně vysoké částky nebo nemá správně nastavené krytí. Proto klientům nabízíme bezplatnou revizi všech finančních produktů na jednom místě.",
+    "highlightTitle": "Bezplatná revize smluv",
+    "highlightText": "Vyplňte formulář a zjistěte, zda můžete ušetřit nebo získat lepší podmínky.",
+    "areasKicker": "Co pro vás zkontrolujeme?",
+    "areasTitle": "Jeden přehled pro všechny důležité produkty.",
+    "areas": [
+      {
+        "label": "Pojištění vozidel",
+        "icon": "ShieldCheck"
+      },
+      {
+        "label": "Pojištění majetku a domácnosti",
+        "icon": "HomeShield"
+      },
+      {
+        "label": "Životní a úrazové pojištění",
+        "icon": "Stethoscope"
+      },
+      {
+        "label": "Hypotéky a úvěry",
+        "icon": "BuildingBank"
+      },
+      {
+        "label": "Investice a spoření",
+        "icon": "ChartPie"
+      },
+      {
+        "label": "Energie",
+        "icon": "Bolt"
+      },
+      {
+        "label": "Firemní a podnikatelská řešení",
+        "icon": "Briefcase"
+      }
+    ],
+    "stepsKicker": "Jak to funguje?",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Vyplníte krátký formulář",
+        "description": "Sdělíte nám, jaké služby aktuálně využíváte."
+      },
+      {
+        "number": "02",
+        "title": "Nahrajete své smlouvy",
+        "description": "Stačí PDF nebo fotografie smluv."
+      },
+      {
+        "number": "03",
+        "title": "Připravíme analýzu",
+        "description": "Zkontrolujeme cenu, podmínky i případná rizika."
+      },
+      {
+        "number": "04",
+        "title": "Navrhneme řešení",
+        "description": "Pokud najdeme prostor pro úsporu nebo zlepšení, vše vám srozumitelně vysvětlíme."
+      }
+    ],
+    "reasonsTitle": "Proč klienti využívají SMK Capital?",
+    "reasons": [
+      "Jeden partner pro všechny finance",
+      "Pravidelná péče o smlouvy",
+      "Pomoc při pojistných událostech",
+      "Pojištění, úvěry, investice i energie na jednom místě",
+      "Bezplatná analýza stávajícího stavu"
+    ],
+    "reasonsNote": "Revizi bereme jako začátek dlouhodobé péče. Nejde jen o cenu, ale o správné krytí, návaznosti smluv a přehled do budoucna."
+  }
+}

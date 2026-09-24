@@ -1,0 +1,53 @@
+{
+  "seo": {
+    "title": "O nás | SMK Capital",
+    "description": "SMK Capital je finanční dům, který se stará o pojištění, hypotéky, úvěry, investice i správu smluv klientů bez chaosu a zbytečné byrokracie."
+  },
+  "hero": {
+    "kicker": "O nás",
+    "title": "Jsme finanční dům pro náročné.",
+    "description": "Pomáháme klientům mít všechny finance přehledně na jednom místě – bez chaosu, bez zbytečné byrokracie a bez starostí.",
+    "mediaTitle": "Vy žijete svůj život.",
+    "mediaSubtitle": "My hlídáme:",
+    "watchedAreas": [
+      "výročí smluv",
+      "ceny energií",
+      "změny trhu",
+      "financování",
+      "pojistné události",
+      "vozový park",
+      "domácnost",
+      "váš klid"
+    ]
+  },
+  "whoWeAre": {
+    "kicker": "Kdo jsme",
+    "title": "Neřešíme jen jednotlivé smlouvy, ale celkový systém vašich financí."
+  },
+  "benefitsSection": {
+    "kicker": "Naše výhody",
+    "title": "Rozdíl poznáte hlavně v přístupu."
+  },
+  "videoSection": {
+    "kicker": "Video",
+    "title": "Představení SMK Capital",
+    "video": "/reklama_final.mp4",
+    "videoLabel": "Představení SMK Capital",
+    "asideKicker": "Ve videu uvidíte",
+    "asideTitle": "Jak se staráme o vaše finance.",
+    "asideItems": [
+      "Všechny finance přehledně na jednom místě",
+      "Administrativu a změny řešíme za vás",
+      "O smlouvy se staráme dlouhodobě"
+    ],
+    "asideFooter": "Vy se nestaráte. My se staráme."
+  },
+  "contactSection": {
+    "kicker": "Kontaktní údaje",
+    "title": "Jsme vám k dispozici",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-mail",
+    "addressLabel": "Adresa",
+    "availabilityLabel": "Dostupnost"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "name": "SMK CAPITAL",
+  "shortName": "SMK Capital",
+  "slogan": "Kompletní finanční servis bez starostí",
+  "phone": "607 845 260",
+  "phoneHref": "tel:+420607845260",
+  "email": "info@smkcapital.cz",
+  "emailHref": "mailto:info@smkcapital.cz",
+  "ico": "09112715",
+  "address": [],
+  "availability": "Po-Ne, 8:00-20:00",
+  "logo": "/images/logo_edit.png",
+  "ogImage": "/og-image.png",
+  "url": "https://smkcapital.cz",
+  "social": [
+    {
+      "label": "Facebook",
+      "icon": "BrandFacebook",
+      "href": "/nenalezeno"
+    },
+    {
+      "label": "Instagram",
+      "icon": "BrandInstagram",
+      "href": "https://www.instagram.com/smk.capital"
+    },
+    {
+      "label": "LinkedIn",
+      "icon": "BrandLinkedin",
+      "href": "https://www.linkedin.com/in/smk-capital-b4394541b"
+    },
+    {
+      "label": "TikTok",
+      "icon": "BrandTiktok",
+      "href": "/nenalezeno"
+    }
+  ],
+  "footer": {
+    "servicesHeading": "Služby",
+    "contactHeading": "Kontakt",
+    "socialHeading": "Sledujte nás",
+    "copyright": "Všechna práva vyhrazena.",
+    "legalLinks": [
+      {
+        "label": "Ochrana osobních údajů",
+        "href": "#"
+      },
+      {
+        "label": "Obchodní podmínky",
+        "href": "#"
+      }
+    ]
+  },
+  "navigation": {
+    "sidebar": [
+      {
+        "label": "Domů",
+        "href": "/",
+        "icon": "Home"
+      },
+      {
+        "label": "Služby",
+        "href": "/sluzby",
+        "icon": "ShieldCheck"
+      },
+      {
+        "label": "O nás",
+        "href": "/o-nas",
+        "icon": "UsersGroup"
+      }
+    ],
+    "pages": [
+      {
+        "label": "Domů",
+        "href": "/"
+      },
+      {
+        "label": "Služby",
+        "href": "/sluzby"
+      },
+      {
+        "label": "Revize smluv",
+        "href": "/revize-smluv"
+      },
+      {
+        "label": "Autopojištění",
+        "href": "/autopojisteni"
+      },
+      {
+        "label": "Hypoteční propočet",
+        "href": "/hypoteka-propocet"
+      },
+      {
+        "label": "O nás",
+        "href": "/o-nas"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+.env
+.env.local
+.env*.local
+
+# Video (110 MB) se do repozitáře nedává – zůstává nahrané přímo na hostingu
+# a nasazení ho tam nepřepisuje. Pro lokální vývoj si ho do public/ zkopírujte
+# ručně, ať se na úvodní stránce přehraje.
+public/reklama_final.mp4

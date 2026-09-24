@@ -1,0 +1,12 @@
+{
+  "seo": {
+    "title": "Stránka nenalezena | SMK Capital",
+    "description": "Odkaz, který hledáte, není k dispozici nebo byl přesunut. Vraťte se na hlavní stránku SMK Capital."
+  },
+  "kicker": "Chyba 404",
+  "title": "Tato stránka zatím není k dispozici.",
+  "description": "Odkaz, který hledáte, ještě není aktivní nebo byl přesunut. Vraťte se na hlavní stránku, případně si prohlédněte naše služby.",
+  "primaryCta": { "label": "Zpět na hlavní stránku", "href": "/" },
+  "secondaryCta": { "label": "Prohlédnout služby", "href": "/sluzby" },
+  "badgeLabel": "Stránka nenalezena"
+}

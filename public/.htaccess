@@ -1,0 +1,56 @@
+# Konfigurace Apache pro hosting Endora.
+#
+# Web je od přechodu na Next.js předgenerovaný: každá stránka má na disku
+# vlastní složku s index.html (/sluzby/index.html, /o-nas/index.html, …),
+# takže tu na rozdíl od dřívější verze není potřeba žádné přesměrování
+# všech adres na index.html.
+
+# Vlastní stránka 404 (vygeneruje ji build z app/not-found.tsx).
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Vynutí HTTPS.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Komprese textových souborů.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Cachování. Soubory ve /_next/static/ mají v názvu hash, takže je bezpečné
+# je držet v prohlížeči dlouho; HTML se naopak nesmí cachovat, aby se úprava
+# textu v administraci projevila hned po nasazení.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  <IfModule mod_rewrite.c>
+    # Soubory z /_next/static/ jsou verzované hashem v názvu.
+    <FilesMatch "\.(js|css|woff2)$">
+      Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+  </IfModule>
+
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

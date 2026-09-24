@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "title": "Vše na jednom místě",
+      "description": "Pojištění, financování, investice i servis smluv řešíte s jedním partnerem.",
+      "icon": "ShieldCheck"
+    },
+    {
+      "title": "Šetříme vám čas i energii",
+      "description": "Postaráme se o administrativu, změny i komunikaci s institucemi.",
+      "icon": "ClockHour3"
+    },
+    {
+      "title": "Přehled ve vašich financích",
+      "description": "Máte jasno, co kde běží, co dává smysl a co je potřeba upravit.",
+      "icon": "Star"
+    },
+    {
+      "title": "Dlouhodobý servis a péče",
+      "description": "Nekončíme podpisem. Smlouvy spravujeme, hlídáme a upravujeme i dál.",
+      "icon": "HeartHandshake"
+    },
+    {
+      "title": "Osobní přístup ke každému klientovi",
+      "description": "Řešení navrhujeme podle skutečné situace, ne podle univerzální šablony.",
+      "icon": "UserCircle"
+    }
+  ]
+}

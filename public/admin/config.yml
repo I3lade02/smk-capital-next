@@ -1,0 +1,669 @@
+# Konfigurace administrace obsahu (Sveltia CMS).
+#
+# Editor běží jako statická stránka na adrese https://smkcapital.cz/admin/.
+# Přihlašuje se GitHub účtem a uložené změny zapisuje rovnou do repozitáře.
+# Každý zápis spustí GitHub Actions, které web sestaví a nahrají na Endoru.
+#
+# !! PŘED PRVNÍM POUŽITÍM VYPLNIT `repo` a `base_url` – viz README.md.
+
+backend:
+  name: github
+  repo: I3lade02/smk-capital-next # uživatel/repozitář na GitHubu
+  branch: main
+  # Adresa pomocné OAuth služby, která přihlášení přes GitHub zprostředkuje
+  # (zdarma běží jako Cloudflare Worker – postup je v README.md).
+  base_url: https://VYPLNIT.workers.dev
+  site_domain: smkcapital.cz
+  commit_messages:
+    create: 'Obsah: nová položka „{{collection}}“'
+    update: 'Obsah: úprava „{{collection}}“'
+    delete: 'Obsah: smazání „{{collection}}“'
+    uploadMedia: 'Obsah: nahrán soubor {{path}}'
+    deleteMedia: 'Obsah: smazán soubor {{path}}'
+
+# Změny se ukládají rovnou (bez schvalovacího workflow).
+publish_mode: simple
+
+# Kam se ukládají obrázky nahrané v administraci.
+media_folder: public/uploads
+public_folder: /uploads
+
+locale: cs
+site_url: https://smkcapital.cz
+display_url: https://smkcapital.cz
+logo_url: https://smkcapital.cz/images/logo_edit.png
+
+# Seznam ikon, které umí web vykreslit. Musí odpovídat registru
+# v souboru src/lib/icons.tsx – když se přidá ikona tam, přidejte ji i sem.
+icon_options: &icon_options
+  - ArrowLeft
+  - ArrowRight
+  - Bolt
+  - BrandFacebook
+  - BrandInstagram
+  - BrandLinkedin
+  - BrandTiktok
+  - Briefcase
+  - BuildingBank
+  - Bulb
+  - Calculator
+  - Car
+  - ChartPie
+  - Check
+  - ChevronRight
+  - CircleCheck
+  - ClockHour3
+  - Coin
+  - FileText
+  - FileTypePdf
+  - HeartHandshake
+  - Home
+  - HomeShield
+  - Mail
+  - MapPin
+  - Phone
+  - PhoneCall
+  - Photo
+  - ShieldCheck
+  - Star
+  - Stethoscope
+  - UserCircle
+  - UsersGroup
+
+collections:
+  - name: nastaveni
+    label: Nastavení webu
+    format: json
+    files:
+      - name: site
+        label: Kontakty, logo a menu
+        file: content/site.json
+        description: Údaje, které se opakují na celém webu – telefon, e-mail, logo, sociální sítě a položky menu.
+        fields:
+          - { name: name, label: Název firmy (velkými písmeny), widget: string }
+          - { name: shortName, label: Název firmy (běžný zápis), widget: string }
+          - { name: slogan, label: Slogan v levém pruhu, widget: string }
+          - { name: phone, label: Telefon (jak se zobrazuje), widget: string }
+          - {
+              name: phoneHref,
+              label: Telefon pro proklik,
+              widget: string,
+              hint: "Ve tvaru tel:+420607845260 – na tohle číslo se zavolá po kliknutí.",
+            }
+          - { name: email, label: E-mail, widget: string }
+          - {
+              name: emailHref,
+              label: E-mail pro proklik,
+              widget: string,
+              hint: "Ve tvaru mailto:info@smkcapital.cz",
+            }
+          - { name: ico, label: IČO, widget: string }
+          - {
+              name: address,
+              label: Adresa,
+              widget: list,
+              required: false,
+              field: { name: line, label: Řádek adresy, widget: string },
+              hint: "Nechte prázdné, pokud se adresa nemá na webu zobrazovat.",
+            }
+          - { name: availability, label: Dostupnost, widget: string }
+          - { name: logo, label: Logo, widget: image }
+          - {
+              name: ogImage,
+              label: Náhledový obrázek pro sdílení,
+              widget: image,
+              hint: "Obrázek, který se ukáže při vložení odkazu na Facebook nebo LinkedIn.",
+            }
+          - {
+              name: url,
+              label: Adresa webu,
+              widget: string,
+              hint: "Bez lomítka na konci. Měnit jen při změně domény.",
+            }
+          - name: social
+            label: Sociální sítě
+            widget: list
+            label_singular: odkaz
+            summary: "{{fields.label}}"
+            fields:
+              - { name: label, label: Název sítě, widget: string }
+              - { name: icon, label: Ikona, widget: select, options: *icon_options }
+              - { name: href, label: Odkaz, widget: string }
+          - name: footer
+            label: Patička
+            widget: object
+            collapsed: true
+            fields:
+              - { name: servicesHeading, label: Nadpis sloupce se službami, widget: string }
+              - { name: contactHeading, label: Nadpis sloupce s kontakty, widget: string }
+              - { name: socialHeading, label: Nadpis sloupce se sítěmi, widget: string }
+              - { name: copyright, label: Text za rokem, widget: string }
+              - name: legalLinks
+                label: Odkazy vpravo dole
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: Text odkazu, widget: string }
+                  - { name: href, label: Adresa, widget: string }
+          - name: navigation
+            label: Menu
+            widget: object
+            collapsed: true
+            fields:
+              - name: sidebar
+                label: Levý pruh
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: Text, widget: string }
+                  - { name: href, label: Adresa, widget: string }
+                  - { name: icon, label: Ikona, widget: select, options: *icon_options, required: false }
+              - name: pages
+                label: Pořadí stránek (šipky předchozí/další)
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: Text, widget: string }
+                  - { name: href, label: Adresa, widget: string }
+
+  - name: stranky
+    label: Stránky
+    format: json
+    files:
+      - name: home
+        label: Domů
+        file: content/home.json
+        fields:
+          - name: seo
+            label: Titulek a popis pro vyhledávače
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titulek stránky, widget: string }
+              - { name: description, label: Popis stránky, widget: text }
+          - name: hero
+            label: Úvodní blok
+            widget: object
+            fields:
+              - { name: badge, label: Štítek nad nadpisem, widget: string }
+              - { name: titleFirstLine, label: Nadpis – první řádek, widget: string }
+              - { name: titleSecondLine, label: Nadpis – druhý řádek (zlatý), widget: string }
+              - { name: lead, label: Tučný podnadpis, widget: string }
+              - { name: description, label: Popis, widget: text }
+              - name: primaryCta
+                label: Hlavní tlačítko
+                widget: object
+                fields:
+                  - { name: label, label: Text tlačítka, widget: string }
+                  - { name: href, label: Adresa, widget: string }
+              - name: secondaryCta
+                label: Druhé tlačítko
+                widget: object
+                fields:
+                  - { name: label, label: Text tlačítka, widget: string }
+                  - { name: href, label: Adresa, widget: string }
+              - { name: video, label: Video, widget: file }
+              - { name: videoLabel, label: Popis videa pro čtečky, widget: string }
+              - name: highlights
+                label: Štítky pod tlačítky
+                widget: list
+                field: { name: item, label: Štítek, widget: string }
+          - name: servicesIntro
+            label: Karta „Přehled služeb“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: image, label: Obrázek, widget: image }
+              - { name: imageAlt, label: Popis obrázku, widget: string }
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - { name: linkLabel, label: Text odkazu, widget: string }
+          - name: about
+            label: Sekce „O nás“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: lead, label: Úvodní odstavec, widget: text }
+              - name: highlights
+                label: Štítky
+                widget: list
+                field: { name: item, label: Štítek, widget: string }
+              - name: paragraphs
+                label: Odstavce v tmavé kartě
+                widget: list
+                field: { name: item, label: Odstavec, widget: text }
+          - name: process
+            label: Sekce „Jak to u nás probíhá“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+          - name: whyUs
+            label: Sekce „Proč SMK Capital“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+          - name: reviews
+            label: Sekce „Recenze“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - { name: ctaLabel, label: Text tlačítka, widget: string }
+              - name: items
+                label: Recenze klientů
+                label_singular: recenzi
+                widget: list
+                summary: "{{fields.name}} – {{fields.service}}"
+                hint: "Recenze se na webu střídají automaticky každých 15 sekund."
+                fields:
+                  - { name: name, label: Jméno, widget: string }
+                  - { name: service, label: Služba, widget: string }
+                  - { name: rating, label: Hodnocení (počet hvězd), widget: number, value_type: int, min: 1, max: 5, default: 5 }
+                  - { name: text, label: Text recenze, widget: text }
+
+      - name: services
+        label: Služby
+        file: content/services.json
+        fields:
+          - name: seo
+            label: Titulek a popis pro vyhledávače
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titulek stránky, widget: string }
+              - { name: description, label: Popis stránky, widget: text }
+          - name: hero
+            label: Úvodní blok
+            widget: object
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+          - name: listSection
+            label: Nadpis nad výpisem služeb
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+          - name: processSection
+            label: Nadpis nad postupem spolupráce
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+          - name: categories
+            label: Kategorie služeb
+            widget: list
+            label_singular: kategorie
+            summary: "{{fields.number}} – {{fields.title}}"
+            fields:
+              - { name: number, label: Číslo, widget: string }
+              - { name: title, label: Název, widget: string }
+              - { name: description, label: Popis, widget: text }
+              - { name: href, label: Odkaz, widget: string }
+              - { name: icon, label: Ikona, widget: select, options: *icon_options }
+              - name: items
+                label: Položky ve výčtu
+                widget: list
+                field: { name: item, label: Položka, widget: string }
+          - name: quickActions
+            label: Karty s rychlými akcemi
+            widget: list
+            label_singular: karta
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Popis, widget: text }
+              - { name: label, label: Text tlačítka, widget: string }
+              - { name: href, label: Adresa tlačítka, widget: string }
+              - { name: icon, label: Ikona, widget: select, options: *icon_options }
+              - { name: highlighted, label: Zvýraznit tmavým pozadím, widget: boolean, default: false }
+
+      - name: contractReview
+        label: Revize smluv
+        file: content/contract-review.json
+        fields:
+          - name: seo
+            label: Titulek a popis pro vyhledávače
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titulek stránky, widget: string }
+              - { name: description, label: Popis stránky, widget: text }
+          - name: hero
+            label: Úvodní blok stránky
+            widget: object
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - name: cards
+                label: Dvě karty pod textem
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: *icon_options }
+                  - { name: title, label: Nadpis, widget: string }
+                  - { name: text, label: Text, widget: text }
+                  - { name: highlighted, label: Zvýraznit béžovým pozadím, widget: boolean, default: false }
+              - name: benefits
+                label: Odrážky pod kartami
+                widget: list
+                field: { name: item, label: Odrážka, widget: string }
+          - name: pageSteps
+            label: Tři kroky ve spodní části stránky
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: icon, label: Ikona, widget: select, options: *icon_options }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: text, label: Text, widget: text }
+          - name: section
+            label: Blok „Revize smluv“ (zobrazuje se na stránce Služby)
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - { name: highlightTitle, label: Nadpis v tmavé kartě, widget: string }
+              - { name: highlightText, label: Text v tmavé kartě, widget: text }
+              - { name: areasKicker, label: Nadtitulek nad oblastmi, widget: string }
+              - { name: areasTitle, label: Nadpis nad oblastmi, widget: string }
+              - name: areas
+                label: Oblasti ke kontrole
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: Název, widget: string }
+                  - { name: icon, label: Ikona, widget: select, options: *icon_options }
+              - { name: stepsKicker, label: Nadtitulek nad postupem, widget: string }
+              - name: steps
+                label: Postup
+                widget: list
+                summary: "{{fields.number}} – {{fields.title}}"
+                fields:
+                  - { name: number, label: Číslo, widget: string }
+                  - { name: title, label: Nadpis, widget: string }
+                  - { name: description, label: Text, widget: text }
+              - { name: reasonsTitle, label: Nadpis v boxu s důvody, widget: string }
+              - name: reasons
+                label: Důvody
+                widget: list
+                field: { name: item, label: Důvod, widget: string }
+              - { name: reasonsNote, label: Poznámka pod důvody, widget: text }
+
+      - name: carInsurance
+        label: Autopojištění
+        file: content/car-insurance.json
+        fields:
+          - name: seo
+            label: Titulek a popis pro vyhledávače
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titulek stránky, widget: string }
+              - { name: description, label: Popis stránky, widget: text }
+          - name: hero
+            label: Úvodní blok
+            widget: object
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - name: cards
+                label: Dvě karty pod textem
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: *icon_options }
+                  - { name: title, label: Nadpis, widget: string }
+                  - { name: text, label: Text, widget: text }
+                  - { name: highlighted, label: Zvýraznit béžovým pozadím, widget: boolean, default: false }
+          - name: processSection
+            label: Sekce „Jak to probíhá“
+            widget: object
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - name: items
+                label: Karty
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: *icon_options }
+                  - { name: title, label: Nadpis, widget: string }
+                  - { name: text, label: Text, widget: text }
+
+      - name: mortgage
+        label: Hypoteční propočet
+        file: content/mortgage.json
+        fields:
+          - name: seo
+            label: Titulek a popis pro vyhledávače
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titulek stránky, widget: string }
+              - { name: description, label: Popis stránky, widget: text }
+          - name: hero
+            label: Úvodní blok
+            widget: object
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - name: cards
+                label: Dvě karty pod textem
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: *icon_options }
+                  - { name: title, label: Nadpis, widget: string }
+                  - { name: text, label: Text, widget: text }
+                  - { name: highlighted, label: Zvýraznit béžovým pozadím, widget: boolean, default: false }
+          - name: processSection
+            label: Sekce „Jak to probíhá“
+            widget: object
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - name: items
+                label: Karty
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: icon, label: Ikona, widget: select, options: *icon_options }
+                  - { name: title, label: Nadpis, widget: string }
+                  - { name: text, label: Text, widget: text }
+
+      - name: about
+        label: O nás
+        file: content/about.json
+        fields:
+          - name: seo
+            label: Titulek a popis pro vyhledávače
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titulek stránky, widget: string }
+              - { name: description, label: Popis stránky, widget: text }
+          - name: hero
+            label: Úvodní blok
+            widget: object
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - { name: mediaTitle, label: Nadpis v tmavé kartě, widget: string }
+              - { name: mediaSubtitle, label: Popisek nad výčtem, widget: string }
+              - name: watchedAreas
+                label: Co hlídáme
+                widget: list
+                field: { name: item, label: Položka, widget: string }
+          - name: whoWeAre
+            label: Sekce „Kdo jsme“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+          - name: benefitsSection
+            label: Sekce „Naše výhody“
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+          - name: videoSection
+            label: Sekce s videem
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: video, label: Video, widget: file }
+              - { name: videoLabel, label: Popis videa pro čtečky, widget: string }
+              - { name: asideKicker, label: Nadtitulek v boxu vpravo, widget: string }
+              - { name: asideTitle, label: Nadpis v boxu vpravo, widget: string }
+              - name: asideItems
+                label: Odrážky v boxu vpravo
+                widget: list
+                field: { name: item, label: Odrážka, widget: string }
+              - { name: asideFooter, label: Věta dole v boxu, widget: string }
+          - name: contactSection
+            label: Sekce s kontaktními kartami
+            widget: object
+            collapsed: true
+            fields:
+              - { name: kicker, label: Nadtitulek, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: phoneLabel, label: Popisek karty s telefonem, widget: string }
+              - { name: emailLabel, label: Popisek karty s e-mailem, widget: string }
+              - { name: addressLabel, label: Popisek karty s adresou, widget: string }
+              - { name: availabilityLabel, label: Popisek karty s dostupností, widget: string }
+
+      - name: notFound
+        label: Stránka 404
+        file: content/not-found.json
+        fields:
+          - name: seo
+            label: Titulek a popis pro vyhledávače
+            widget: object
+            collapsed: true
+            fields:
+              - { name: title, label: Titulek stránky, widget: string }
+              - { name: description, label: Popis stránky, widget: text }
+          - { name: kicker, label: Nadtitulek, widget: string }
+          - { name: title, label: Nadpis, widget: string }
+          - { name: description, label: Text, widget: text }
+          - name: primaryCta
+            label: Hlavní tlačítko
+            widget: object
+            fields:
+              - { name: label, label: Text tlačítka, widget: string }
+              - { name: href, label: Adresa, widget: string }
+          - name: secondaryCta
+            label: Druhé tlačítko
+            widget: object
+            fields:
+              - { name: label, label: Text tlačítka, widget: string }
+              - { name: href, label: Adresa, widget: string }
+          - { name: badgeLabel, label: Popisek v tmavé kartě, widget: string }
+
+  - name: bloky
+    label: Opakující se bloky
+    format: json
+    files:
+      - name: benefits
+        label: Výhody (Proč SMK Capital)
+        file: content/benefits.json
+        description: Zobrazuje se na úvodní stránce i na stránce O nás.
+        fields:
+          - name: items
+            label: Výhody
+            widget: list
+            label_singular: výhoda
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+              - { name: icon, label: Ikona, widget: select, options: *icon_options }
+
+      - name: process
+        label: Postup spolupráce
+        file: content/process.json
+        description: Pět kroků na úvodní stránce i na stránce Služby.
+        fields:
+          - name: steps
+            label: Kroky
+            widget: list
+            label_singular: krok
+            summary: "{{fields.number}} – {{fields.title}}"
+            fields:
+              - { name: number, label: Číslo, widget: string }
+              - { name: title, label: Nadpis, widget: string }
+              - { name: description, label: Text, widget: text }
+
+      - name: partners
+        label: Partneři
+        file: content/partners.json
+        fields:
+          - { name: kicker, label: Nadtitulek, widget: string }
+          - { name: title, label: Nadpis, widget: string }
+          - { name: description, label: Text, widget: text }
+          - name: rowOne
+            label: První řada log (posun doleva)
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Název partnera, widget: string }
+              - { name: logo, label: Logo, widget: image }
+          - name: rowTwo
+            label: Druhá řada log (posun doprava)
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Název partnera, widget: string }
+              - { name: logo, label: Logo, widget: image }
+
+      - name: contact
+        label: Kontaktní formulář
+        file: content/contact.json
+        description: Texty kolem formuláře „Požadavek na zavolání“. Formulář samotný se posílá na stejné PHP skripty jako dosud.
+        fields:
+          - { name: title, label: Nadpis, widget: string }
+          - { name: description, label: Text pod nadpisem, widget: text }
+          - name: notes
+            label: Poznámky v levém sloupci
+            widget: list
+            field: { name: item, label: Poznámka, widget: string }
+          - { name: asideTitle, label: Nadpis pravého sloupce, widget: string }
+          - { name: calloutKicker, label: Nadtitulek v tmavém boxu, widget: string }
+          - { name: calloutTitle, label: Nadpis v tmavém boxu, widget: string }
+          - { name: calloutText, label: Text v tmavém boxu, widget: text }
+          - name: services
+            label: Nabídka v poli „Vyberte službu“
+            widget: list
+            field: { name: item, label: Služba, widget: string }
+          - { name: successTitle, label: Nadpis po odeslání, widget: string }
+          - { name: successText, label: Text po odeslání, widget: text }
+          - {
+              name: privacyConsentText,
+              label: Text souhlasu se zpracováním údajů,
+              widget: text,
+              hint: "Pozor – tenhle text se ukládá i do e-mailu jako doklad o uděleném souhlasu.",
+            }

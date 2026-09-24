@@ -1,0 +1,107 @@
+{
+  "seo": {
+    "title": "SMK Capital | Pojištění, hypotéky a finance",
+    "description": "SMK Capital nabízí pojištění, hypotéky, úvěry, investice a dlouhodobou správu smluv. Srozumitelný finanční servis bez zbytečných starostí."
+  },
+  "hero": {
+    "badge": "SMK CAPITAL",
+    "titleFirstLine": "Vy neřešíte nic.",
+    "titleSecondLine": "My řešíme vše.",
+    "lead": "Kompletní finanční servis bez starostí.",
+    "description": "Postaráme se o všechny vaše finance i papíry – s přehledem a bez starostí. Pomáháme s pojištěním, financováním, investicemi i správou smluv.",
+    "primaryCta": {
+      "label": "Požadavek na zavolání",
+      "href": "#contact"
+    },
+    "secondaryCta": {
+      "label": "Bezplatná kontrola smluv",
+      "href": "/revize-smluv"
+    },
+    "video": "/reklama_final.mp4",
+    "videoLabel": "Představení služeb SMK Capital",
+    "highlights": [
+      "Pojištění",
+      "Financování",
+      "Investice",
+      "Servis smluv"
+    ]
+  },
+  "servicesIntro": {
+    "image": "https://images.unsplash.com/photo-1560282013-9f0f8ae50635?auto=format&fit=crop&w=900&q=80",
+    "imageAlt": "Vůz zaparkovaný před domem",
+    "kicker": "Přehled služeb",
+    "title": "Všechny finanční produkty na jednom místě",
+    "description": "Pojištění, financování, investice i správa smluv řešíme jako jeden funkční celek, ne jako oddělené položky bez souvislostí.",
+    "linkLabel": "Zobrazit všechny služby"
+  },
+  "about": {
+    "kicker": "O nás",
+    "title": "Jsme finanční dům pro náročné.",
+    "lead": "Pomáháme klientům mít všechny finance přehledně na jednom místě. Bez chaosu, bez zbytečné byrokracie a bez starostí.",
+    "highlights": [
+      "Telefonicky i osobně",
+      "Bez chaosu a zbytečné byrokracie",
+      "Administrativu řešíme za vás"
+    ],
+    "paragraphs": [
+      "Pomáháme klientům mít všechny finance přehledně na jednom místě – bez chaosu, bez zbytečné byrokracie a bez starostí. Telefonicky i osobně.",
+      "Máme dlouhodobé zkušenosti napříč finančními produkty a víme, jak z nich vytvořit funkční systém, který dává smysl. Neřešíme jen jednotlivé smlouvy, ale celkový přehled, kontrolu a dlouhodobou stabilitu vašich financí.",
+      "Postaráme se za vás o veškerou administrativu – od výpovědí stávajících smluv až po sjednání nových řešení. Vy tak nemusíte trávit čas obcházením institucí ani řešením detailů, kterým se nechcete věnovat.",
+      "Zároveň pro vás vždy hledáme řešení, které odpovídá vaší situaci a dává dlouhodobě smysl. Vy se nestaráte. My se staráme."
+    ]
+  },
+  "process": {
+    "kicker": "Jak to u nás probíhá",
+    "title": "Jednoduše, přehledně a bez starostí.",
+    "description": "Od prvního kontaktu až po dlouhodobou správu smluv vedeme spolupráci tak, aby pro Vás byla co nejjednodušší a bez zbytečných starostí."
+  },
+  "whyUs": {
+    "kicker": "Proč SMK Capital",
+    "title": "Spravujeme finance tak, aby dávaly smysl dlouhodobě.",
+    "description": "Neřešíme jen jednotlivé smlouvy. Stavíme systém, který vám dává přehled, kontrolu a klid i do dalších let."
+  },
+  "reviews": {
+    "kicker": "Recenze",
+    "title": "Recenze klientů",
+    "description": "Podívejte se, jak se nám daří pomáhat klientům s pojištěním, úvěry i hypotékami. Osobní přístup a dlouhodobá péče jsou pro nás na prvním místě.",
+    "ctaLabel": "Domluvit konzultaci",
+    "items": [
+      {
+        "name": "Jana Nováková",
+        "service": "Hypotéka",
+        "rating": 5,
+        "text": "Se SMK Capital jsme vyřídili hypotéku bez jediného stresu. Vše nám srozumitelně vysvětlili a byli nám neustále k dispozici."
+      },
+      {
+        "name": "Petr Svoboda",
+        "service": "Povinné ručení",
+        "rating": 4,
+        "text": "Rychlé vyřízení pojištění vozidla a vždy ochotný přístup. Oceňuji, že mi poradili i s věcmi, na které bych sám nepřišel."
+      },
+      {
+        "name": "Lucie Dvořáková",
+        "service": "Refinancování úvěru",
+        "rating": 5,
+        "text": "Díky refinancování jsme ušetřili tisíce korun ročně. Profesionální přístup od prvního telefonátu až po podpis smlouvy."
+      },
+      {
+        "name": "Martin Kučera",
+        "service": "Životní pojištění",
+        "rating": 5,
+        "text": "Konečně mám pojištění, kterému rozumím. Poradce si na mě udělal čas a vše trpělivě vysvětlil, žádný tlak na rychlé rozhodnutí."
+      },
+      {
+        "name": "Tereza Horáková",
+        "service": "Spotřebitelský úvěr",
+        "rating": 3,
+        "text": "Vyřízení trvalo o něco déle, než jsem čekala, ale nakonec jsme společně našli řešení, které mi opravdu vyhovovalo."
+      },
+      {
+        "name": "Jakub Procházka",
+        "service": "Investice a spoření",
+        "rating": 5,
+        "text": "Skvělá spolupráce při nastavení pravidelného spoření pro děti. Doporučuji každému, kdo hledá osobní a poctivý přístup."
+      }
+    ]
+  }
+}

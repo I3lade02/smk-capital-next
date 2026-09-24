@@ -1,0 +1,46 @@
+{
+  "seo": {
+    "title": "Autopojištění – rychlá poptávka | SMK Capital",
+    "description": "Poptejte povinné ručení i havarijní pojištění vozidla. Stačí SPZ a kontakt, nabídku připravíme na míru."
+  },
+  "hero": {
+    "kicker": "Autopojištění",
+    "title": "Rychlá poptávka pojištění vozidla.",
+    "description": "Stačí SPZ a kontakt. Pokud máte po ruce aktuální pojistnou smlouvu, můžete ji přiložit jako PDF a urychlit tím přípravu nabídky.",
+    "cards": [
+      {
+        "icon": "ClockHour3",
+        "title": "Rychlejší zpracování",
+        "text": "PDF smlouvy je volitelné, ale pomůže nám porovnat parametry bez zbytečného dohledávání.",
+        "highlighted": false
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Bez závazku",
+        "text": "Po odeslání vás kontaktujeme a doladíme údaje potřebné pro relevantní nabídku.",
+        "highlighted": true
+      }
+    ]
+  },
+  "processSection": {
+    "kicker": "Jak to probíhá",
+    "title": "Minimum údajů, jasný další krok.",
+    "items": [
+      {
+        "icon": "Car",
+        "title": "Pošlete SPZ",
+        "text": "Doplníte telefon, e-mail a registrační značku vozidla."
+      },
+      {
+        "icon": "FileTypePdf",
+        "title": "PDF je nepovinné",
+        "text": "Aktuální smlouva nám pomůže rychleji porovnat cenu a krytí."
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Připravíme nabídku",
+        "text": "Ozveme se s možnostmi povinného ručení i havarijního pojištění."
+      }
+    ]
+  }
+}

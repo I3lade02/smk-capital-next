@@ -1,0 +1,24 @@
+{
+  "title": "Požadavek na zavolání",
+  "description": "Vyplňte telefon a e-mail. Ozveme se vám zpět co nejdříve, nebo v čase, který si sami zvolíte.",
+  "notes": [
+    "Pojištění, úvěry, hypotéky, investice i servis smluv.",
+    "Telefonicky i osobně. Bez zbytečného obcházení institucí."
+  ],
+  "asideTitle": "Další způsoby kontaktu",
+  "calloutKicker": "Orientační kalkulace",
+  "calloutTitle": "Autopojištění i úvěr řešíme s vámi osobně.",
+  "calloutText": "Online kalkulačky můžeme doplnit v další fázi. Zatím vám připravíme orientační nabídku podle vaší situace.",
+  "services": [
+    "Pojištění",
+    "Autopojištění",
+    "Hypotéky",
+    "Úvěry a refinancování",
+    "Investice a servis smluv",
+    "Energie",
+    "Jiné"
+  ],
+  "successTitle": "Děkujeme, požadavek jsme přijali.",
+  "successText": "Ozveme se vám co nejdříve. Mezitím si můžete připravit aktuální smlouvy nebo základní informace k požadavku.",
+  "privacyConsentText": "Souhlasím se zpracováním osobních údajů za účelem vyřízení požadavku a zpětného kontaktování."
+}
